@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Profile | E-commerce</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/produtcs-ecommerce.css" />
+    <link rel="stylesheet" href="./assets/css/User-profile.css" />
+  </head>
+  <body>
+    <header></header>
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-md-10 offset-md-1 col-lg-4 col-sm-12 offset-sm-0 profile-div py-5"
+        >
+          <div class="img-profile">
+            <img src="./assets/imgs/img-1.jpg" id="profile-picture" />
+            <p
+              class="User-Name"
+              style="margin: 0; color: white; font-weight: 600"
+            >
+              User-name
+            </p>
+            <label for="input-file">Update Photo</label>
+            <input
+              type="file"
+              accept="image/jpg, image/png, image/jpeg"
+              name="input-file"
+              id="input-file"
+              style="display: none"
+            />
+          </div>
+          <div class="under-profile-div">
+            <ul class="list-group">
+              <li class="list-group-item one">Emri Mbiemri</li>
+              <li class="list-group-item two">Emaili</li>
+              <li class="list-group-item three">Passwordi</li>
+              <li class="list-group-item five">
+                <strong>Student:</strong> <i>PerPorgramera</i>
+              </li>
+              <li class="list-group-item four">
+                <strong>Web Developer</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="col-lg-6 col-md-10 offset-md-1 col-sm-12 offset-sm-0 offset-lg-0 user-informations"
+        >
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item li-one">An item</li>
+            <li class="list-group-item li-two">A second item</li>
+            <li class="list-group-item li-three">A third item</li>
+            <li class="list-group-item li-four">A fourth item</li>
+            <li class="list-group-item li-five">And a fifth one</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer></footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module">
+      import { initHeader } from "./modules/header.js";
+      import { initFooter } from "./modules/footer.js";
+
+      const profilePic = document.getElementById("profile-picture");
+      const inputFile = document.getElementById("input-file");
+
+      inputFile.onchange = function () {
+        profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        inputFile.style.height = "130px";
+        inputFile.style.objectFit = "cover";
+        let userPorfile = {
+          image: inputFile.files[0],
+        };
+        let Profilepic = JSON.parse(localStorage.getItem("UserProfile")) || [];
+        Profilepic.push(userPorfile);
+        localStorage.setItem("UserProfile", JSON.stringify(Profilepic));
+      };
+      function userProfile() {
+        const getUserInformations = JSON.parse(localStorage.getItem("users"));
+        console.log(getUserInformations);
+        let liOne = document.querySelector(".one");
+        liOne.innerHTML = `<strong>FullName:</strong> ${getUserInformations[0].fullname}`;
+        console.log(liOne);
+        let liTwo = (document.querySelector(
+          ".two"
+        ).innerHTML = `<strong>Email:</strong> ${getUserInformations[0].email}`);
+
+        let liThree = (document.querySelector(
+          ".three"
+        ).innerHTML = `<strong>Passord:</strong> ${getUserInformations[0].password}`);
+        let UserName = (document.querySelector(".User-Name").innerHTML =
+          getUserInformations[0].fullname);
+
+        // other div
+        let liOne1 = (document.querySelector(
+          ".li-one"
+        ).innerHTML = `Connected with: <a href="">Instagram</a>`);
+        let liTwo2 = (document.querySelector(
+          ".li-two"
+        ).innerHTML = `Connected with: <a href="">Facebook</a>`);
+        let liThree3 = (document.querySelector(
+          ".li-three"
+        ).innerHTML = `Connected with: <a href="">Twitter</a>`);
+        let liFour4 = (document.querySelector(
+          ".li-four"
+        ).innerHTML = `Connected with: <a href="">Github</a>`);
+      }
+      try {
+        userProfile();
+      } catch (e) {
+        console.log(e);
+      }
+
+      initHeader(document.querySelector("header"));
+      initFooter(document.querySelector("footer"));
+    </script>
+  </body>
+</html>

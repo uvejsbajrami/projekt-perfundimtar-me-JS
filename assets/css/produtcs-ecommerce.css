@@ -1,0 +1,129 @@
+.card {
+  width: 18rem;
+  height: 100%;
+}
+.card img {
+  height: 200px; /* Adjust the height as needed */
+  object-fit: cover;
+}
+img {
+  cursor: pointer;
+}
+
+/* popup-image style  */
+/* .container .popup-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  display: none;
+}
+
+.container .popup-image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid white;
+  border-radius: 5px;
+  width: 750px;
+  object-fit: cover;
+} */
+
+
+.custom-navbar {
+  background-color: #007bff;
+}
+
+.custom-logo {
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.custom-toggler {
+  border: none;
+}
+
+.custom-toggler-icon {
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.custom-nav {
+  margin-right: 0;
+}
+
+.custom-link {
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.custom-link:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+.custom-dropdown-item {
+  color: #333;
+}
+
+.custom-dropdown-item:hover {
+  background-color: #ff7f50;
+  color: #fff;
+}
+
+.product-card {
+  margin-bottom: 20px;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.card-text {
+  font-size: 16px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+#pagination {
+  display: flex;
+  justify-content: center;
+}
+.card-animation {
+  animation: cardAnimation 2s ease-in-out forwards;
+}
+
+.card {
+  margin: 10px;
+  background-color: #f0f0f0;
+  transition: transform 0.2s;
+}

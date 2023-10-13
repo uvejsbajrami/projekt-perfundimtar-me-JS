@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/add-to-card.css" />
+    <title>Your Cart | E-commerce</title>
+  </head>
+  <body>
+    <header></header>
+    <div id="productCards" class="row">
+      <div class="card-add-card"></div>
+    </div>
+    <footer></footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module">
+      import { initHeader } from "./modules/header.js";
+      import { initFooter } from "./modules/footer.js";
+
+      function addToCard() {
+        const addTocart = JSON.parse(localStorage.getItem("add-to-card"));
+
+        const productCards = document.querySelector("#productCards");
+        productCards.innerHTML = "";
+
+        addTocart.forEach((product, index) => {
+          const card = document.createElement("div");
+          card.className = "col-sm-6 py-4 col-lg-4 col-xl-3 product-card";
+
+          card.innerHTML = `
+            <div class="card">
+                <img src="${product.img}" class="card-img-top" alt="${product.title}">
+                <div class="card-body">
+                    <h5 class="card-title">${product.title}</h5>
+                    <p class="card-text"> <strong>${product.category}</strong></p>
+                    <p class="card-text"> <strong>${product.price}</strong></p>
+                    <button type="button" class="btn btn-success btn-buyNow" id="btn" >Buy Now</button>
+                    <button type="button" class="btn btn-danger btn-delete" data-index="${index}">Delete</button>
+                </div>
+            </div>
+        `;
+
+          productCards.appendChild(card);
+
+          productCards.addEventListener("click", function (event) {
+            if (event.target.classList.contains("btn-buyNow")) {
+              console.log("clicked");
+              window.location.href = " http://127.0.0.1:5500/buy-now-cart.html";
+            }
+          });
+        });
+
+        productCards.addEventListener("click", function (event) {
+          if (event.target.classList.contains("btn-delete")) {
+            console.log("clicked");
+            const indexToRemove = event.target.getAttribute("data-index");
+            if (indexToRemove !== null) {
+              addTocart.splice(indexToRemove, 1);
+              localStorage.setItem("add-to-card", JSON.stringify(addTocart));
+              addToCard();
+            }
+          }
+        });
+      }
+
+      try {
+        addToCard();
+      } catch (e) {
+        console.log(e);
+      }
+
+      initHeader(document.querySelector("header"));
+      initFooter(document.querySelector("footer"));
+    </script>
+  </body>
+</html>

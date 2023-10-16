@@ -108,7 +108,8 @@
 
         let liThree = (document.querySelector(
           ".three"
-        ).innerHTML = `<strong>Passord:</strong> ${getUserInformations[0].password}`);
+        ).innerHTML = `<strong>Passord:</strong> ${getUserInformations[0].password}<a href="change-password.html"><button type="button" class="btn btn-secondary change-password">Change Password</button></a>
+      `);
         let UserName = (document.querySelector(".User-Name").innerHTML =
           getUserInformations[0].fullname);
 

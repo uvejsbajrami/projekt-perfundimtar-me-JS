@@ -45,3 +45,13 @@
   background-color: transparent !important;
   color: white;
 }
+.change-password {
+  padding: 5px;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #212529 !important;
+}
+a {
+  text-decoration: none;
+}

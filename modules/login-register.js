@@ -8,10 +8,6 @@ registerLink.addEventListener("click", () => {
   logregBox.classList.add("active");
 });
 
-// loginLink.addEventListener("click", () => {
-//   logregBox.classList.remove("active");
-// });
-
 // icona per me bo passin te dukshme
 
 const passi = document.querySelector("#password");

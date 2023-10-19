@@ -33,7 +33,6 @@ img {
   object-fit: cover;
 } */
 
-
 .custom-navbar {
   background-color: #007bff;
 }
@@ -82,7 +81,7 @@ img {
 
 .card {
   border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s;
 }
 
@@ -126,4 +125,47 @@ img {
   margin: 10px;
   background-color: #f0f0f0;
   transition: transform 0.2s;
+}
+.dailyProduct {
+  width: 500px;
+  z-index: -1;
+  box-shadow: 10px 5px 20px 2px rgba(0, 0, 0, 0.9);
+}
+.dailyProduct img {
+  width: 100%;
+}
+
+.bn31 {
+  background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
+  border-radius: 40px;
+  box-sizing: border-box;
+  color: #00a84f;
+  display: block;
+  height: 40px;
+  font-size: 16px;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  width: 100px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.bn31:hover {
+  color: #fff;
+}
+
+.bn31 .bn31span {
+  align-items: center;
+  background: #fdfdff;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  transition: background 0.5s ease;
+  width: 100%;
+}
+
+.bn31:hover .bn31span {
+  background: transparent;
 }

@@ -25,6 +25,7 @@
     <!-- ktu section  -->
 
     <div id="productCards" class="row"></div>
+    <div id="daily-deal" class="row"></div>
     <div id="pagination"></div>
 
     <footer></footer>
@@ -37,6 +38,10 @@
     <script type="module">
       import { initHeader } from "./modules/header.js";
       import { initFooter } from "./modules/footer.js";
+      //Daily Deals
+
+      import { DailyDeals } from "./modules/Daily-deals.js";
+      DailyDeals();
 
       function createProductCards(page = 1) {
         const productsPerPage = 12;

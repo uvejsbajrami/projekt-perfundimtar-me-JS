@@ -61,7 +61,7 @@
               const card = document.createElement("div");
               card.className = "col-sm-6 py-4 col-lg-4  col-xl-3 product-card ";
               card.innerHTML = `
-                  <div class="card">
+                  <div class="card"  >
                     <img src="${product.image}" class="card-img-top" alt="${product.title}">
                     <div class="card-body">
                       <h5 class="card-title">${product.title}</h5>
@@ -120,7 +120,6 @@
           }
         }
       });
-
       try {
         createProductCards();
       } catch (e) {

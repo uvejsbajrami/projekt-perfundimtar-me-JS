@@ -22,8 +22,10 @@ export function initHeader(div) {
                Dropdown
               </a>
               <ul class="dropdown-menu"style="color:white;">
-                <li><a class="dropdown-item custom-dropdown-item login" href="profile-user.html"><i class="fa-solid fa-circle-user" style="color: #322f2f;"></i>${
-                  getUser ? getUser : ""
+                <li><a class="dropdown-item custom-dropdown-item login" href="profile-user.html">${
+                  getUser
+                    ? `<i class="fa-solid fa-circle-user" style="color: #322f2f;"></i> ${getUser} `
+                    : ""
                 }</a></li>
                 <li><a class="dropdown-item custom-dropdown-item login" href="index.html">Login</a></li>
                 <li><a class="dropdown-item custom-dropdown-item" href="index.html">Register</a></li>

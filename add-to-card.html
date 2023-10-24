@@ -40,37 +40,72 @@
 
         const productCards = document.querySelector("#productCards");
         productCards.innerHTML = "";
+        //////
 
         addTocart.forEach((product, index) => {
           const card = document.createElement("div");
           card.className = "col-sm-6 py-4 col-lg-4 col-xl-3 product-card";
 
           card.innerHTML = `
-            <div class="card">
-                <img src="${product.img}" class="card-img-top" alt="${product.title}">
-                <div class="card-body">
-                    <h5 class="card-title">${product.title}</h5>
-                    <p class="card-text"> <strong>${product.category}</strong></p>
-                    <p class="card-text"> <strong>${product.price}</strong></p>
-                    <button type="button" class="btn btn-success btn-buyNow" id="btn" >Buy Now</button>
-                    <button type="button" class="btn btn-danger btn-delete" data-index="${index}">Delete</button>
-                </div>
-            </div>
+          <div class="card z-0" >
+              <img src="${product.img}" class="card-img-top" alt="${
+            product.title
+          }">
+              <div class="card-body">
+                  <h5 class="card-title">${product.title}</h5>
+                  <p class="card-text category"> <strong>${
+                    product.category
+                  }</strong></p>
+                  <p class="card-text price"> <strong>${
+                    product.price
+                  }</strong></p>
+                  <button type="button" class="btn btn-success btn-buyNow" data-index="${index}">Buy Now</button>
+                  <button type="button" class="btn btn-danger btn-delete" data-index="${index}">Delete</button>
+                  <button type="button" class="btn btn-secondary btn-details" data-card="${JSON.stringify(
+                    product
+                  )}">Details</button>
+              </div>
+          </div>
         `;
 
           productCards.appendChild(card);
+        });
 
+        productCards.addEventListener("click", function (event) {
+          if (event.target.classList.contains("btn-buyNow")) {
+            event.stopPropagation();
+            console.log("Buy Now clicked");
+            window.location.href = "http://127.0.0.1:5500/buy-now-cart.html";
+          }
           productCards.addEventListener("click", function (event) {
-            if (event.target.classList.contains("btn-buyNow")) {
-              console.log("clicked");
-              window.location.href = " http://127.0.0.1:5500/buy-now-cart.html";
+            const clickedCard = event.target.closest(".card");
+            if (clickedCard) {
+              const title =
+                clickedCard.querySelector(".card-title").textContent || "";
+              const category =
+                clickedCard.querySelector(".category").textContent || "";
+              const price =
+                clickedCard.querySelector(".price").textContent || "";
+              const img =
+                clickedCard.querySelector("img").getAttribute("src") || "";
+
+              const detailsCard = {
+                title: title,
+                category: category,
+                price: price,
+                img: img,
+              };
+              window.location.href =
+                "http://127.0.0.1:5500/products-details.html";
+              localStorage.setItem("DetailsCard", JSON.stringify(detailsCard));
             }
           });
         });
 
         productCards.addEventListener("click", function (event) {
           if (event.target.classList.contains("btn-delete")) {
-            console.log("clicked");
+            event.stopPropagation();
+            console.log("Delete clicked");
             const indexToRemove = event.target.getAttribute("data-index");
             if (indexToRemove !== null) {
               addTocart.splice(indexToRemove, 1);

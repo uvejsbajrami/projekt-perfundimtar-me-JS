@@ -3,7 +3,7 @@
   height: 100%;
 }
 .card img {
-  height: 200px; /* Adjust the height as needed */
+  height: 300px; /* Adjust the height as needed */
   object-fit: cover;
 }
 img {

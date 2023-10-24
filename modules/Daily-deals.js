@@ -57,7 +57,7 @@ export function DailyDeals() {
                                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                     <p class="card-text"><span style="font-size:17px;border:2px dashed black;">${
                                       DailyProduct2.price < 10 ||
-                                      DailyProduct2.price < 20
+                                      DailyProduct2.price <= 20
                                         ? DailyProduct2.price
                                         : DailyProduct2.price - 20
                                     }$</span></p>

@@ -25,7 +25,7 @@
     <!-- ktu section  -->
 
     <div id="productCards" class="row"></div>
-    <div id="daily-deal" class="row"></div>
+    <div id="daily-deal" class="row" style="width: 100%"></div>
     <div id="pagination"></div>
 
     <footer></footer>
@@ -67,6 +67,7 @@
                       <h5 class="card-title">${product.title}</h5>
                       <p class="card-text"><strong>Category:</strong> ${product.category}</p>
                       <p class="card-text"><strong>Price:</strong> $${product.price}</p>
+                      <div class="card-description d-none">${product.description}</div>
                       <button type="button" class="btn btn-success" id="btn">Add to Cart</button>
                     </div>
                   </div>
@@ -101,12 +102,16 @@
             const cardPrice = card.querySelector(
               ".card-text:nth-child(3)"
             ).textContent;
-
+            let cardDescription = card.querySelector(".card-description");
+            if (cardDescription) {
+              cardDescription = cardDescription.textContent;
+            }
             const productObj = {
               img: card.querySelector("img").getAttribute("src"),
               title: cardTitle,
               category: cardCategory,
               price: cardPrice,
+              description: cardDescription,
             };
 
             let productsArray = [];

@@ -16,6 +16,7 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/details.css" />
     <link rel="stylesheet" href="./assets/css/add-to-card.css" />
     <title>Your Cart | E-commerce</title>
   </head>
@@ -59,6 +60,7 @@
                   <p class="card-text price"> <strong>${
                     product.price
                   }</strong></p>
+                  <p class="cardDescription d-none">${product.description}</p>
                   <button type="button" class="btn btn-success btn-buyNow" data-index="${index}">Buy Now</button>
                   <button type="button" class="btn btn-danger btn-delete" data-index="${index}">Delete</button>
                   <button type="button" class="btn btn-secondary btn-details" data-card="${JSON.stringify(
@@ -88,12 +90,15 @@
                 clickedCard.querySelector(".price").textContent || "";
               const img =
                 clickedCard.querySelector("img").getAttribute("src") || "";
+              const Desctription =
+                clickedCard.querySelector(".cardDescription").textContent || "";
 
               const detailsCard = {
                 title: title,
                 category: category,
                 price: price,
                 img: img,
+                description: Desctription,
               };
               window.location.href =
                 "http://127.0.0.1:5500/products-details.html";
@@ -102,18 +107,22 @@
           });
         });
 
-        productCards.addEventListener("click", function (event) {
-          if (event.target.classList.contains("btn-delete")) {
-            event.stopPropagation();
-            console.log("Delete clicked");
-            const indexToRemove = event.target.getAttribute("data-index");
-            if (indexToRemove !== null) {
-              addTocart.splice(indexToRemove, 1);
-              localStorage.setItem("add-to-card", JSON.stringify(addTocart));
-              addToCard();
+        productCards.addEventListener(
+          "click",
+          function (event) {
+            if (event.target.classList.contains("btn-delete")) {
+              event.stopPropagation();
+              console.log("Delete clicked");
+              const indexToRemove = event.target.getAttribute("data-index");
+              if (indexToRemove !== null) {
+                addTocart.splice(indexToRemove, 1);
+                localStorage.setItem("add-to-card", JSON.stringify(addTocart));
+                addToCard();
+              }
             }
-          }
-        });
+          },
+          true
+        );
       }
 
       try {
